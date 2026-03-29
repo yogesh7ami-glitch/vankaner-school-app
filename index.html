@@ -6,60 +6,45 @@
     <title>એડમિશન મેનેજમેન્ટ - પ્રાથમિક શાળા વાંકાનેર</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;700&display=swap');
-
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
         body { font-family: 'Hind Vadodara', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; }
-
-        /* લોગિન ઓવરલે */
         #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a5276; display: flex; justify-content: center; align-items: center; z-index: 9999; }
         .login-box { background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.3); width: 320px; }
-
-        /* નેવિગેશન બાર */
         .nav-bar { background: #1a5276; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .nav-btns { display: flex; gap: 10px; }
         .nav-btn { padding: 6px 12px; border: 1px solid white; background: transparent; color: white; border-radius: 4px; cursor: pointer; font-size: 13px; }
         .logout-btn { background: #e74c3c; border: none; }
-
         .container { width: 210mm; min-height: 297mm; margin: 10px auto; background: white; padding: 8mm; border: 2px solid #000; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         .header-main { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 12px; }
         .school-logo { width: 85px; height: 85px; object-fit: contain; border: 1px solid #ccc; cursor: pointer; }
         .school-title { flex-grow: 1; text-align: center; }
         .school-name { font-size: 24px; margin: 0; font-weight: bold; color: #1a5276; }
-
         fieldset { border: 1.5px solid #000; border-radius: 5px; padding: 10px; margin-bottom: 10px; width: 100%; }
         legend { font-weight: bold; padding: 0 8px; font-size: 13px; }
         .personal-info-wrapper { display: flex; gap: 15px; }
         .form-fields { flex-grow: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .student-photo-area { width: 110px; text-align: center; }
         .student-preview { width: 100px; height: 120px; border: 1.5px solid #000; object-fit: cover; background: #f9f9f9; }
-
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
         .form-group { display: flex; flex-direction: column; margin-bottom: 5px; }
         label { font-weight: 600; font-size: 12px; margin-bottom: 2px; }
         input, select, textarea { padding: 6px; border: 1px solid #000; border-radius: 3px; font-size: 12.5px; font-family: 'Hind Vadodara'; width: 100%; }
-
-        /* સહી વિભાગ */
         .signature-section { display: flex; justify-content: space-between; margin-top: auto; padding: 40px 20px 20px 20px; }
         .sig-box { text-align: center; border-top: 1.5px solid #000; width: 180px; padding-top: 5px; font-weight: bold; font-size: 14px; }
-
         .admin-panel { max-width: 210mm; margin: 20px auto; background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
         .student-table { width: 100%; border-collapse: collapse; margin-top: 5px; }
         .student-table th, .student-table td { border: 1px solid #ddd; padding: 6px; text-align: left; font-size: 13px; }
         .student-table th { background-color: #3498db; color: white; }
-
         .action-btn { padding: 4px 8px; cursor: pointer; border: none; border-radius: 3px; color: white; }
         .edit-btn { background: #2980b9; }
         .delete-btn { background: #c0392b; }
-
         .btn-container { max-width: 210mm; margin: 10px auto; display: flex; gap: 10px; padding-bottom: 40px; }
         .main-btn { flex: 1; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; }
-
         @media print {
             #loginOverlay, .nav-bar, .admin-panel, .btn-container, .photo-label, input[type="file"], .doc-upload-section { display: none !important; }
             body { background: white; }
             .container { margin: 0 auto; border: 2px solid #000; box-shadow: none; height: 290mm; }
-            .signature-section { margin-top: auto; }
         }
     </style>
 </head>
@@ -78,7 +63,7 @@
     <span><b>વાંકાનેર પ્રાથમિક શાળા - પોર્ટલ</b></span>
     <div class="nav-btns">
         <button class="nav-btn" onclick="changePassword()">પાસવર્ડ બદલો</button>
-        <button class="nav-btn logout-btn" onclick="logout()">Logout (બહાર નીકળો)</button>
+        <button class="nav-btn logout-btn" onclick="logout()">Logout</button>
     </div>
 </div>
 
@@ -162,18 +147,6 @@
             </div>
         </fieldset>
 
-        <fieldset class="doc-upload-section">
-            <legend>દસ્તાવેજ અપલોડ (માત્ર ફોર્મ સેવિંગ માટે)</legend>
-            <div class="doc-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
-                <div class="form-group"><label>આધાર (વિદ્યાર્થી):</label><input type="file"></div>
-                <div class="form-group"><label>આધાર (પિતા):</label><input type="file"></div>
-                <div class="form-group"><label>રેશન કાર્ડ:</label><input type="file"></div>
-                <div class="form-group"><label>પાસબુક:</label><input type="file"></div>
-                <div class="form-group"><label>જાતિનો દાખલો:</label><input type="file"></div>
-                <div class="form-group"><label>જન્મનો દાખલો:</label><input type="file"></div>
-            </div>
-        </fieldset>
-
         <div class="signature-section">
             <div class="sig-box">વાલીની સહી</div>
             <div class="sig-box">આચાર્યશ્રીની સહી</div>
@@ -202,6 +175,22 @@
 
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
+    let students = [];
+
+    // મહત્વનું: Firebase માંથી ડેટા ફેચ કરવાનું ફંક્શન
+    function fetchAllData() {
+        database.ref('students').on('value', snap => {
+            const data = snap.val();
+            students = [];
+            if(data) {
+                for(let id in data) {
+                    students.push(data[id]);
+                }
+            }
+            localStorage.setItem('school_db', JSON.stringify(students));
+            renderList();
+        });
+    }
 
     function checkLogin() {
         const input = document.getElementById('passInput').value;
@@ -210,7 +199,7 @@
             if(input === correctPass) {
                 document.getElementById('loginOverlay').style.display = 'none';
                 sessionStorage.setItem("isLoggedIn", "true");
-                renderList();
+                fetchAllData(); // લોગિન થતા જ બધો ડેટા લોડ કરો
             } else {
                 document.getElementById('loginError').style.display = 'block';
             }
@@ -228,12 +217,8 @@
         const newPass = prompt("નવો પાસવર્ડ નાખો:");
         if(newPass && newPass.length >= 4) {
             database.ref('admin/password').set(newPass).then(() => alert("પાસવર્ડ સફળતાપૂર્વક બદલાયો!"));
-        } else if(newPass) {
-            alert("પાસવર્ડ ઓછામાં ઓછો ૪ અક્ષરનો રાખો.");
         }
     }
-
-    let students = JSON.parse(localStorage.getItem('school_db')) || [];
 
     function previewImg(input, id) {
         if (input.files && input.files[0]) {
@@ -257,15 +242,9 @@
 
         database.ref('students/' + data.aadhaar).set(data).then(() => {
             alert('સેવ સફળ!');
-            updateLocalData(data);
-            renderList();
+            form.reset();
+            document.getElementById('studentPreview').src = '';
         });
-    }
-
-    function updateLocalData(data) {
-        let idx = students.findIndex(s => s.aadhaar === data.aadhaar);
-        if(idx > -1) students[idx] = data; else students.push(data);
-        localStorage.setItem('school_db', JSON.stringify(students));
     }
 
     function renderList() {
@@ -277,26 +256,25 @@
                 <td>${s.aadhaar}</td>
                 <td>${s.std}</td>
                 <td>
-                    <button class="action-btn edit-btn" onclick="loadStudent(${i})">Edit</button>
-                    <button class="action-btn delete-btn" onclick="deleteStudent(${i}, '${s.aadhaar}')">Del</button>
+                    <button class="action-btn edit-btn" onclick="loadStudent('${s.aadhaar}')">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteStudent('${s.aadhaar}')">Del</button>
                 </td>
             </tr>`;
         });
     }
 
-    function loadStudent(i) {
-        let s = students[i];
-        for(let k in s) if(document.getElementById(k)) document.getElementById(k).value = s[k];
-        convertDateToWords();
-        window.scrollTo({top: 500, behavior: 'smooth'});
+    function loadStudent(aadhaar) {
+        let s = students.find(item => item.aadhaar === aadhaar);
+        if(s) {
+            for(let k in s) if(document.getElementById(k)) document.getElementById(k).value = s[k];
+            convertDateToWords();
+            window.scrollTo({top: 500, behavior: 'smooth'});
+        }
     }
 
-    function deleteStudent(i, id) {
+    function deleteStudent(id) {
         if(confirm('ડિલીટ કરવું છે?')) {
-            database.ref('students/' + id).remove();
-            students.splice(i, 1);
-            localStorage.setItem('school_db', JSON.stringify(students));
-            renderList();
+            database.ref('students/' + id).remove().then(() => alert('ડિલીટ સફળ!'));
         }
     }
 
@@ -308,25 +286,22 @@
 
     function exportToExcel() {
         if(students.length === 0) return alert("કોઈ ડેટા નથી!");
-        
-        let headers = "નામ,લિંગ,પિતાનું નામ,માતાનું નામ,જન્મ તારીખ,શબ્દોમાં,જન્મ સ્થળ,આધાર નંબર,APAAR ID,જ્ઞાતિ/પેટાજ્ઞાતિ,કેટેગરી,જીઆર નંબર,ધોરણ,મોબાઈલ,દાખલ તારીખ,UDISE,સરનામું,બેંક નામ,એકાઉન્ટ નંબર,IFSC\n";
+        let headers = "નામ,લિંગ,પિતાનું નામ,માતાનું નામ,જન્મ તારીખ,જન્મ સ્થળ,આધાર નંબર,જ્ઞાતિ,કેટેગરી,ધોરણ,મોબાઈલ\n";
         let csv = "\ufeff" + headers;
-
         students.forEach(s => {
-            csv += `"${s.name_guj || ''}","${s.gender || ''}","${s.father_name || ''}","${s.mother_name || ''}","${s.dob || ''}","${s.dobWords || ''}","${s.birth_place || ''}","${s.aadhaar || ''}","${s.apaar_id || ''}","${s.gyati || ''}","${s.category || ''}","${s.gr_no || ''}","${s.std || ''}","${s.mobile || ''}","${s.admission_date || ''}","${s.udise || ''}","${(s.address || '').replace(/\n/g, ' ')}","${s.bank_name || ''}","${s.acc || ''}","${s.ifsc || ''}"\n`;
+            csv += `"${s.name_guj}","${s.gender}","${s.father_name}","${s.mother_name}","${s.dob}","${s.birth_place}","${s.aadhaar}","${s.gyati}","${s.category}","${s.std}","${s.mobile}"\n`;
         });
-
         let b = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
         let a = document.createElement("a");
         a.href = URL.createObjectURL(b);
-        a.download = "Vankaner_School_All_Data.csv";
+        a.download = "Vankaner_Students.csv";
         a.click();
     }
 
     window.onload = () => {
         if(sessionStorage.getItem("isLoggedIn")) {
             document.getElementById('loginOverlay').style.display = 'none';
-            renderList();
+            fetchAllData();
         }
     };
 </script>
